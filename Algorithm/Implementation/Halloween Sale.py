@@ -30,4 +30,4 @@ if __name__ == '__main__':
 
     answer = howManyGames(p, d, m, s)
 
-   print(answer)
+    print(answer)
