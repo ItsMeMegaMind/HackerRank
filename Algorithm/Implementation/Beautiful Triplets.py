@@ -21,7 +21,6 @@ def beautifulTriplets(d, arr):
             out+=1
     return out
 if __name__ == '__main__':
-    print(1)
     nd = input().split()
 
     n = int(nd[0])
