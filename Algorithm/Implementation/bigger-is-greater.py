@@ -34,7 +34,6 @@ def successorCalc(w,a):
 
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     T = int(input())
 
@@ -43,6 +42,4 @@ if __name__ == '__main__':
 
         result = biggerIsGreater(w)
 
-        fptr.write(result + '\n')
-
-    fptr.close()
+        print(result)
