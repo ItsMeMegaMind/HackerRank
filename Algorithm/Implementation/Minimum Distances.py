@@ -7,7 +7,6 @@ import random
 import re
 import sys
 
-# Complete the minimumDistances function below.
 def minimumDistances(arr):
     b = set(arr)
     indices = []
