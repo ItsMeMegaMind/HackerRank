@@ -1,5 +1,5 @@
 def designerPdfViewer(h, word):
-    return max([h[ord(i)-96] for i in word])*len(word)
+    return max([h[ord(i)-97] for i in word])*len(word)
 
 if __name__ == '__main__':
 
