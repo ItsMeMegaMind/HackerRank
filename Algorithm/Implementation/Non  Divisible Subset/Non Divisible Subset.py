@@ -1,20 +1,17 @@
-#!/bin/python
-
-import sys
+import math
 
 n,k = input().strip().split(' ')
 n,k = [int(n),int(k)]
 a = map(int,input().strip().split(' '))
-cnt = [0]*k
+mod = [0]*k
 for x in a:
-    cnt[x % k] += 1
-print(cnt)
-i, j, r = 1, k-1, 0
-if cnt[0] > 0:
-    r += 1
-while i < j:
-    r += max(cnt[i],cnt[j])
-    i, j = i+1, j-1
-if i == j and cnt[i] > 0:
-    r += 1
-print(r)
+    mod[x % k] += 1
+
+out = 0
+for i in range(1,math.ceil(k/2)):
+    out += max(mod[i], mod[k-i])
+    
+if(k%2==0):    out+=1
+
+if(mod[0]>0): out+=1
+print(out)

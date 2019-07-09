@@ -6,6 +6,80 @@ import random
 import re
 import sys
 
+# Complete the queensAttack function below.
+def queensAttack(n, k, r_q, c_q, obstacles):
+
+    out = right(n,r_q,c_q,obstacles)
+    out += left(n, r_q, c_q, obstacles)
+    out += up(n, r_q, c_q, obstacles)
+    out += down(n, r_q, c_q, obstacles)
+    out += upL(n, r_q, c_q, obstacles)
+    out += upR(n, r_q, c_q, obstacles)
+    out += downL(n, r_q, c_q, obstacles)
+    out += downR(n, r_q, c_q, obstacles)
+    return out
+
+
+
+def right(n,y,x,obstacles):
+    out = 0
+    while (x<=n and ([y,x] not in obstacles)  ):
+        out+=1
+        x+=1
+    return (out - 1)
+
+def left(n,y,x,obstacles):
+    out = 0
+    while (x>=1 and ([y,x] not in obstacles)  ):
+        out+=1
+        x-=1
+    return (out - 1)
+
+def down(n,y,x,obstacles):
+    out = 0
+    while (y>=1 and ([y,x] not in obstacles)  ):
+        out+=1
+        y-=1
+    return (out - 1)
+
+def up(n,y,x,obstacles):
+    out = 0
+    while (y<=n and ([y,x] not in obstacles)  ):
+        out+=1
+        y+=1
+    return (out - 1)
+
+def upR(n,y,x,obstacles):
+    out = 0
+    while (y<=n  and x<=n  and ([y,x] not in obstacles)  ):
+        out+=1
+        y+=1
+        x+=1
+    return (out - 1)
+
+def upL(n,y,x,obstacles):
+    out = 0
+    while (y<=n  and x>0 and ([y,x] not in obstacles)  ):
+        out+=1
+        y+=1
+        x-=1
+    return (out - 1)
+
+def downL(n,y,x,obstacles):
+    out = 0
+    while (y>0  and x>0 and ([y,x] not in obstacles)  ):
+        out+=1
+        y-=1
+        x-=1
+    return (out - 1)
+
+def downR(n,y,x,obstacles):
+    out = 0
+    while (y>0  and x<=n and ([y,x] not in obstacles)  ):
+        out+=1
+        y-=1
+        x+=1
+    return (out - 1)
 
 if __name__ == '__main__':
 
@@ -22,57 +96,10 @@ if __name__ == '__main__':
     c_q = int(r_qC_q[1])
 
     obstacles = []
-    right = 0
-    left = n+1
-    down = 0
-    up = n+1
-    leftUp =1
-    rightUp = n+1
-    leftDown = 0
-    rightDown = 0
 
     for _ in range(k):
-        obstacle = (list(map(int, input().rstrip().split())))
-        if(obstacle[0] ==r_q):
-            if(obstacle[1]>c_q):
-                left = min(obstacle[1],left)
-            else:
-                right = max(obstacle[1],right)
-        elif (obstacle[1] ==c_q):
-            if(obstacle[0]>r_q):
-                up = min(obstacle[0],up)
-            else:
-                down = max(obstacle[0],down)
-        elif((abs(obstacle[0]-r_q)==abs(obstacle[1]-c_q))):
-            if(obstacle[1] <c_q): #left
-                if (obstacle[0] > r_q): #up
-                    leftUp = min(leftUp,obstacle[0])
-                else:
-                    leftDown = max(leftDown,obstacle[0])
-            else:
-                if (obstacle[0] > r_q): #up
-                    rightUpUp = min(rightUp,obstacle[0])
-                else:
-                    rightDown = max(rightDown,obstacle[0])
-
-    print(right)
-    print(left)
-    print(up)
-    print(down)
-    print(leftUp)
-    print(leftDown)
-    print(rightDown)
-    print(rightUp)
-    result =   abs(right - r_q ) -1
-    result += abs(r_q - left ) -1
-    result += abs( up - c_q ) -1
-    result += abs( c_q - down ) -1
-    result += abs( leftUp - r_q ) -1
-    result+= abs(rightUp - r_q ) -1
-    result += abs( r_q - leftDown ) -1
-    result += abs( r_q - rightDown ) -1
-
-
-
+        obstacles.append(list(map(int, input().rstrip().split())))
+        print(_)
+    result = queensAttack(n, k, r_q, c_q, obstacles)
 
     print(result)
