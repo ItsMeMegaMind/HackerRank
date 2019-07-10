@@ -1,21 +1,34 @@
-def isPalin(s):
-    for i in range(len(s) // 2):
-        if s[i] != s[len(s) - i - 1]: return False
-    return True
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
 
+# Complete the palindromeIndex function below.
 def palindromeIndex(s):
     for i in range((len(s) + 1) // 2):
         if s[i] != s[len(s) - i - 1]:
-            if isPalin(s[:i] + s[i + 1:]):
+            print(i)
+            a = s[:i] + s[i + 1:]
+            b = s[:len(s)-i-1]+s[len(s)-i:]
+            print(a)
+            print(b)
+            if isPalin(a):
                 return i
-            else:
-                print("HERE")
-                return len(s) - i - 1
+            elif isPalin(b):
+                return (len(s)-i-1)
     return -1
 
+def isPalin(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - i - 1]: return False
 
-for i in range(0, int(input())):
-    x = input()
-    result = palindromeIndex(x)
-    print(result)
+    return True
+
+if __name__ == '__main__':
+    for i in range(int(input())):
+        x = input()
+        result = palindromeIndex(x)
+        print(result)
