@@ -13,7 +13,6 @@ def getWeight(a):
 
 if __name__ == '__main__':
     s = input()
-   # out= []
     out = set()
     prv = ''
     weight = 0
