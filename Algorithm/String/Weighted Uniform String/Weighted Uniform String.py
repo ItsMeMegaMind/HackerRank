@@ -9,7 +9,7 @@ import sys
 
 
 def getWeight(a):
-    return ord(a)- 96
+    return (ord(a)- 96)
 
 if __name__ == '__main__':
     s = input()
